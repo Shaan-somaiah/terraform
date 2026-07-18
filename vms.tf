@@ -4,7 +4,7 @@ locals {
     dns-node2 = {
       vmid        = 107
       node        = "pve-node1"
-      clone_from  = 100 ##debian-small
+      clone_from  = 100 ##debian-13-small
       cpu         = 1
       memory      = 2048
       bridge      = "vmbr10"
@@ -22,7 +22,7 @@ locals {
     nas = {
       vmid        = 2010
       node        = "pve-node1"
-      clone_from  = 101 ##debian-large
+      clone_from  = 101 ##debian-13-large
       cpu         = 2
       memory      = 8192
       bridge      = "vmbr20"
@@ -40,7 +40,7 @@ locals {
     k8s-master = {
       vmid        = 3050
       node        = "pve-node1"
-      clone_from  = 100
+      clone_from  = 102 ## debian-12-small
       cpu         = 2
       memory      = 4096
       bridge      = "vmbr30"
@@ -58,7 +58,7 @@ locals {
     k8s-node1 = {
       vmid        = 3051
       node        = "pve-node1"
-      clone_from  = 100
+      clone_from  = 102
       cpu         = 2
       memory      = 4096
       bridge      = "vmbr30"
@@ -76,7 +76,7 @@ locals {
     k8s-node2 = {
       vmid        = 3052
       node        = "pve-node1"
-      clone_from  = 100
+      clone_from  = 102
       cpu         = 2
       memory      = 4096
       bridge      = "vmbr30"
