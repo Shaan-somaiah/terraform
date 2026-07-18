@@ -27,4 +27,10 @@ resource "proxmox_virtual_environment_vm" "vm" {
     mac_address = var.mac_addresses[each.key]
   }
 
+  startup {
+    order      = each.value.startup.order
+    up_delay   = each.value.startup.up_delay
+    down_delay = each.value.startup.down_delay
+  }
+
 }
