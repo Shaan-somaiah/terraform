@@ -1,13 +1,9 @@
 resource "proxmox_virtual_environment_vm" "vm" {
-
   for_each = local.vms
 
   name = each.key
-
   node_name = each.value.node
-
   vm_id = each.value.vmid
-
   tags = each.value.tags
 
   started = true
@@ -25,12 +21,10 @@ resource "proxmox_virtual_environment_vm" "vm" {
     dedicated = each.value.memory
   }
 
-
   network_device {
-
     bridge = each.value.bridge
-
     model = "virtio"
+    mac_address = var.mac_addresses[each.key]
   }
 
 }

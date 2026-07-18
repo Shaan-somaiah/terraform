@@ -1,19 +1,19 @@
 locals {
   vms = {
-    test = {
-      vmid      = 1010
-      node      = "pve-node1"
+    dns-node2 = {
+      vmid        = 107
+      node        = "pve-node1"
 
-      clone_from = 100 ##debian-small
+      clone_from  = 100 ##debian-small
 
-      cpu        = 1
-      memory     = 2048
+      cpu         = 1
+      memory      = 2048
 
-      bridge     = "vmbr50"
+      bridge      = "vmbr10"
 
       tags = [
         "terraform",
-        "test"
+        "core"
       ]
     }
   }
