@@ -1,0 +1,36 @@
+resource "proxmox_virtual_environment_vm" "vm" {
+
+  for_each = local.vms
+
+  name = each.key
+
+  node_name = each.value.node
+
+  vm_id = each.value.vmid
+
+  tags = each.value.tags
+
+  started = true
+
+  clone {
+    vm_id = each.value.clone_from
+  }
+
+  cpu {
+    cores = each.value.cpu
+    type  = "host"
+  }
+
+  memory {
+    dedicated = each.value.memory
+  }
+
+
+  network_device {
+
+    bridge = each.value.bridge
+
+    model = "virtio"
+  }
+
+}
