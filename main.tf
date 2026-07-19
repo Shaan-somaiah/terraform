@@ -33,4 +33,15 @@ resource "proxmox_virtual_environment_vm" "vm" {
     down_delay = each.value.startup.down_delay
   }
 
+  dynamic "hostpci" {
+    for_each = try(each.value.hostpci, [])
+
+    content {
+      device  = hostpci.value.device
+      id      = hostpci.value.id
+      rombar  = hostpci.value.rombar
+      xvga    = hostpci.value.xvga
+    }
+  }
+
 }

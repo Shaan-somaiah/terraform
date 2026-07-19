@@ -17,6 +17,7 @@ locals {
         up_delay   = 0
         down_delay = 0
       }
+
     },
 
     nas = {
@@ -37,6 +38,25 @@ locals {
       }
     },
 
+    pbs = {
+      vmid        = 1012
+      node        = "pve-node1"
+      clone_from  = 103 ##pbs
+      cpu         = 2
+      memory      = 4096
+      bridge      = "vmbr10"
+      tags = [
+        "terraform",
+        "pbs",
+        "core"
+      ]
+      startup = {
+        order      = 3
+        up_delay   = 25
+        down_delay = 0
+      }
+    },
+
     k8s-master = {
       vmid        = 3050
       node        = "pve-node1"
@@ -50,7 +70,7 @@ locals {
       ]
       startup = {
         order      = 4
-        up_delay   = 0
+        up_delay   = 25
         down_delay = 0
       }
     },
@@ -68,7 +88,7 @@ locals {
       ]
       startup = {
         order      = 5
-        up_delay   = 0
+        up_delay   = 25
         down_delay = 0
       }
     },
@@ -86,7 +106,7 @@ locals {
       ]
       startup = {
         order      = 6
-        up_delay   = 0
+        up_delay   = 25
         down_delay = 0
       }
     },
