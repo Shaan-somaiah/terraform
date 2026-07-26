@@ -23,7 +23,7 @@ locals {
     nas = {
       vmid        = 2010
       node        = "pve-node1"
-      clone_from  = 101 ##debian-13-large
+      clone_from  = 100 ##debian-13-large
       cpu         = 2
       memory      = 8192
       bridge      = "vmbr20"
