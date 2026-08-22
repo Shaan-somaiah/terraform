@@ -9,7 +9,9 @@ resource "proxmox_virtual_environment_vm" "vm" {
   started = true
 
   clone {
-    vm_id = each.value.clone_from
+    vm_id     = each.value.clone_from.vm_id
+    node_name = each.value.clone_from.node
+    full      = true
   }
 
   cpu {

@@ -4,7 +4,10 @@ locals {
     nas = {
       vmid        = 2010
       node        = "pve-node1"
-      clone_from  = 100
+      clone_from  = {
+        vm_id = 100                 ## Debian-13-small
+        node = "pve-node2"  
+      }
       cpu         = 2
       memory      = 6144
       bridge      = "vmbr20"
@@ -21,10 +24,13 @@ locals {
 
     pbs = {
       vmid        = 1012
-      node        = "pve-node1"
-      clone_from  = 102 ##pbs
-      cpu         = 1
-      memory      = 2048
+      node        = "pve-node2"
+      clone_from  = {
+        vm_id = 102              ## pbs-template
+        node = "pve-node2"  
+      }
+      cpu         = 2
+      memory      = 4098
       bridge      = "vmbr10"
       tags = [
         "terraform",
@@ -41,9 +47,13 @@ locals {
     k8s-master = {
       vmid        = 3050
       node        = "pve-node1"
-      clone_from  = 101 ## debian-12-small
+      clone_from  = {
+        vm_id = 101                ## debian-12-small
+        node = "pve-node2"
+        
+      }
       cpu         = 2
-      memory      = 2048
+      memory      = 4096
       bridge      = "vmbr30"
       tags = [
         "terraform",
@@ -58,10 +68,14 @@ locals {
 
     k8s-node1 = {
       vmid        = 3051
-      node        = "pve-node1"
-      clone_from  = 101
+      node        = "pve-node2"
+      clone_from  = {
+        vm_id = 101
+        node = "pve-node2"
+        
+      }
       cpu         = 2
-      memory      = 2048
+      memory      = 4096
       bridge      = "vmbr30"
       tags = [
         "terraform",
@@ -76,10 +90,14 @@ locals {
 
     k8s-node2 = {
       vmid        = 3052
-      node        = "pve-node1"
-      clone_from  = 101
+      node        = "pve-node2"
+      clone_from  = {
+        vm_id = 101
+        node = "pve-node2"
+        
+      }
       cpu         = 2
-      memory      = 2048
+      memory      = 4096
       bridge      = "vmbr30"
       tags = [
         "terraform",
